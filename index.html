@@ -1,19 +1,18 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="alternative-main.css">
   <script src="scrypt.js"></script>
-  <script src="indicator.js"></script>
   <title>
     Перша гра
   </title>
 </head>
 <body>
   <a class="a1Main" href="index.html">Головна</a><hr>
-  🎱<span id="spnTokensValue"> </span>,
-  💎<span id="spnCrystalsValue"> </span>,
-  ⚡<span id="spnEnergyValue"> </span>
-  ❤️
+  <span id="spnTokensValue"> </span>,
+  <span id="spnCrystalsValue"> </span>,
+  <span id="spnEnergyValue"> </span>
+  
   <hr>
     <a class="a1" href="house.html">Дім</a>
     <a class="a1" href="hunter.html">Мисливство</a>
@@ -25,21 +24,21 @@
     Вода: <span id="spnWaterValue"> </span>,  Металобрухт: <span id="spnScrapMetalValue"> </span>, Дизельне паливо: <span id="spnDieselFuelValue"> </span>
   </div> 
   <hr>
-  <button id="btnUpgTokenMine" onclick="upgTokenMine()">Покращити свою кваліфікацію, 5650 жетонів</button><br>
-  <button id="btnUpgCrystalMine" onclick="upgCrystalMine()">Побудувати ферму кристалів, 237300 жетонів</button><br>
+  Кваліфікація<br><button id="btnUpgTokenMine" onclick="upgTokenMine()">Покращити, 5650 жетонів</button><br>
   <hr>
-  Водозбирач <button id="btnUpgWaterMine" onclick="upgWaterMine()">Модернізувати</button><br>
+  Ферма кристалів<br><button id="btnUpgCrystalMine" onclick="upgCrystalMine()">Побудувати, 237300 жетонів</button><br>
   <hr>
-  <button id="btnBuyCrystal" onclick="buyCrystal()">Купити 0.004 кристалів за 7.74 жетонів</button><br>
+  Водозбирач<br> <button id="btnUpgWaterMine" onclick="upgWaterMine()">Модернізувати, </button><br>
+  <hr>
+  Обмінник<br>
+  <button id="btnBuyCrystal" onclick="buyCrystal()">Купити 0.004 кристалів за 7.74 жетонів</button>
   <button id="btnBuyCrystal" onclick="buyTokens()">Купити 7.74 токенів за 0.004 кристал</button><br>
   <hr>
   Швидкість заробітку жетонів: <span id="spnTokensRate"> </span> в 1 годину<br>
   Швидкість заробітку кристалів: <span id="spnCrystalsRate"> </span> в 1 годину<br>
   Швидкість заробітку води: <span id="spnWaterRate"> </span>  в 1 годину<br>
   <hr>
-  <!--<button id="LoadGame" onclick="loadGame()">Загрузить игру</button><br>
-  <br>
-      <button id="StartFishing" onclick="StartFishing() ">Ловити рибу</button><br>-->
+
  
   
 </body>

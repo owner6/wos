@@ -95,7 +95,7 @@ function upgWaterMine() {                           // если токенов �
 
 function updateUI() {
   document.getElementById("spnTokensValue").innerHTML   = game.tokens;
-  document.getElementById("btnUpgTokenMine").innerHTML  = "Покращити свою кваліфікацію, ";
+  document.getElementById("btnUpgTokenMine").innerHTML  = "Покращити, ";
   document.getElementById("btnUpgTokenMine").innerHTML += tokensUpgCost().toString();
   document.getElementById("btnUpgTokenMine").innerHTML += " жетонів";
   document.getElementById("spnTokensRate").innerHTML    = game.tokenGrowth * game.tokensUpgLevel;
@@ -104,18 +104,18 @@ function updateUI() {
   
   document.getElementById("spnCrystalsValue").innerHTML = game.crystals; 
     if (game.crystalsUpgLevel === 0) {
-      document.getElementById("btnUpgCrystalMine").innerHTML  = "Побудувати ферму кристалів, ";
+      document.getElementById("btnUpgCrystalMine").innerHTML  = "Побудувати, ";
       document.getElementById("btnUpgCrystalMine").innerHTML += crystalMineBasePriceTokens.toString();
       document.getElementById("btnUpgCrystalMine").innerHTML += " жетонів";
     } else {
-        document.getElementById("btnUpgCrystalMine").innerHTML  = "Модернізувати ферму кристалів, ";
+        document.getElementById("btnUpgCrystalMine").innerHTML  = "Модернізувати, ";
         document.getElementById("btnUpgCrystalMine").innerHTML += crystalsUpgCost().toString();
         document.getElementById("btnUpgCrystalMine").innerHTML += " кристалів";
       }    
   document.getElementById("spnCrystalsRate").innerHTML = game.crystalGrowth * game.crystalsUpgLevel;    
   
   document.getElementById("spnWaterValue").innerHTML = game.water; 
-  document.getElementById("btnUpgWaterMine").innerHTML  = "Модернізувати ";
+  document.getElementById("btnUpgWaterMine").innerHTML  = "Модернізувати, ";
   document.getElementById("btnUpgWaterMine").innerHTML += waterUpgCost().toString();
   document.getElementById("btnUpgWaterMine").innerHTML += " жетонів";
   document.getElementById("spnWaterRate").innerHTML    = game.waterGrowth * game.waterUpgLevel;  
