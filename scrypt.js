@@ -49,8 +49,6 @@ function endOfTurnCalc() {
   } 
 }
 
-
-
 function tokensUpgCost() {
   return game.tokensUpgLevel * 5650     //улучшить квалификацию
   }
