@@ -2,9 +2,9 @@ body {
     background-color: #151D1C;
     color: #827D77;
     font-family: Arial, sans-serif;
-    font-size: 16px;
+    font-size: 1em;
     line-height: 1.5;
-    width: 800px;
+    width: 584px;
     margin: 0 auto;
 }
 
@@ -12,10 +12,26 @@ a {
     color: #827D77;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
+    font-weight: bold;
+    padding: 4px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    color: black;
+    text-decoration:none;
+    outline: none;
+    display: inline-block;
+    width: 100%;
+    margin-right: 0.5%;
+    line-height: 1;
+    background-color: #C98B29;
+    border-width: 1px ;
+    border-style: solid;
+    border-color: #151D1C;
 }
 
 a:hover {
-    color: #8BD8BD;
+    color: #000000;
     text-decoration: none;
 }
 
@@ -23,7 +39,8 @@ hr {
     border: none;
     height: 1px;
     background-color: #D9D9D9;
-    margin: 13px 0;
+    margin: 11px 0;
+    
   }
 
 .panel {
@@ -40,7 +57,7 @@ button {
     color: #161C0F;
     cursor: pointer;
     font-size: 16px;
-    padding: 10px;
+    padding: 5px;
     transition: all 0.2s ease-in-out;
 }
 
@@ -55,22 +72,34 @@ button:hover {
 }
 
 #spnTokensValue::before {
-    content: "🎱 ";
+    content: "🎱";
 }
 
 #spnCrystalsValue::before {
-    content: "💎 ";
+    content: "💎";
 }
 
 #spnEnergyValue::before {
-    content: "⚡ ";
+    content: "⚡";
 }
 
 #a1Main, .a1 {
     font-weight: bold;
-    margin-right: 10px;
     padding: 5px;
     text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    color: black;
+    text-decoration:none;
+    outline: none;
+    display: inline-block;
+    width: 100%;
+    margin-right: 0.5%;
+    line-height: 2;
+    background-color: #C98B29;
+    border-width: 1px ;
+    border-style: solid;
+    border-color: #151D1C;
 }
   
 #a1Main {
@@ -78,11 +107,11 @@ button:hover {
 }
 
 #a1Main:hover, .a1:hover {
-    background-color: #8BD8BD;
+    background-color: #939988;
     color: #0D2B36;
 }
 
 #a1Main:active, .a1:active {
-    background-color: #2E505A;
+    background-color: #E3B05C;
     color: #FFF;
 }

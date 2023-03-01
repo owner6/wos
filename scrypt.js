@@ -18,7 +18,7 @@ let game = {
 
 let crystalMineBasePriceTokens = 5650 * 12 * 12  //стоимость постройки кристальной фермы(5650 - необходимый доход в месяц*мес*года за сколько реальнасобирать на жилье)
 
-myTimer = setInterval(endOfTurnCalc, 36000000)     // обновление игрових единиц (таймер) обновляется каждый час
+myTimer = setInterval(endOfTurnCalc, 3600000)     // обновление игрових единиц (таймер) обновляется каждый час
 
 const costTokenBuyCrystal = 0.004                 
 const costCrystalByToken = 7.74                   
@@ -48,6 +48,8 @@ function endOfTurnCalc() {
     updateUI();  
   } 
 }
+
+
 
 function tokensUpgCost() {
   return game.tokensUpgLevel * 5650     //улучшить квалификацию
