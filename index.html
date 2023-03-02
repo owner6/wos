@@ -1,47 +1,54 @@
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-  <link rel="stylesheet" href="alternative-main.css">
-  <script src="scrypt.js"></script>
-  <link rel="icon" href="media/resourses/favicon.ico"><!-- 32×32 -->
-  <title>
-    Перша гра
-  </title>
-  
-</head>
-<body>
-  <a class="a1Main" href="index.html">Головна</a><hr>
-  <span id="spnTokensValue"> </span>,
-  <span id="spnCrystalsValue"> </span>,
-  <span id="spnEnergyValue"> </span>
-  
-  <hr>
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перша гра</title>
+    <link rel="stylesheet" href="alternative-main.css">
+    <link rel="icon" href="media/resourses/favicon.ico"><!-- 32×32 -->
+    <script src="scrypt.js"></script>
+  </head>
+
+  <body>
+    <a class="a1Main" href="index.html">Головна</a>
+    <hr>
+    <span id="spnTokensValue"></span>,
+    <span id="spnCrystalsValue"></span>,
+    <span id="spnEnergyValue"></span>
+    <hr>
+
     <a class="a1" href="house.html">Дім</a>
     <a class="a1" href="hunter.html">Мисливство</a>
-  <hr>
-  
-  
-  <div class="panel">
-    <h3>Склад</h3>
-    Вода: <span id="spnWaterValue"> </span>,  Металобрухт: <span id="spnScrapMetalValue"> </span>, Дизельне паливо: <span id="spnDieselFuelValue"> </span>
-  </div> 
-  <hr>
-  Кваліфікація<br><button id="btnUpgTokenMine" onclick="upgTokenMine()">Покращити, 5650 жетонів</button><br>
-  <hr>
-  Ферма кристалів<br><button id="btnUpgCrystalMine" onclick="upgCrystalMine()">Побудувати, 237300 жетонів</button><br>
-  <hr>
-  Водозбирач<br> <button id="btnUpgWaterMine" onclick="upgWaterMine()">Модернізувати, </button><br>
-  <hr>
-  Обмінник<br>
-  <button id="btnBuyCrystal" onclick="buyCrystal()">Купити 0.004 кристалів за 7.74 жетонів</button>
-  <button id="btnBuyCrystal" onclick="buyTokens()">Купити 7.74 токенів за 0.004 кристал</button><br>
-  <hr>
-  Швидкість заробітку жетонів: <span id="spnTokensRate"> </span> в 1 годину<br>
-  Швидкість заробітку кристалів: <span id="spnCrystalsRate"> </span> в 1 годину<br>
-  Швидкість заробітку води: <span id="spnWaterRate"> </span>  в 1 годину<br>
-  <hr>
+    <hr>
 
- 
-  
-</body>
+    <div class="panel">
+      <h3>Склад</h3>
+      Вода: <span id="spnWaterValue"></span>,
+      Металобрухт: <span id="spnScrapMetalValue"></span>,
+      Дизельне паливо: <span id="spnDieselFuelValue"></span>
+    </div>
+    <hr>
+
+    Кваліфікація<br>
+    <button id="btnUpgTokenMine" onclick="upgTokenMine()">Покращити, 5650 жетонів</button>
+    <hr>
+
+    Ферма кристалів<br>
+    <button id="btnUpgCrystalMine" onclick="upgCrystalMine()">Побудувати, 237300 жетонів</button>
+    <hr>
+
+    Водозбирач<br>
+    <button id="btnUpgWaterMine" onclick="upgWaterMine()">Модернізувати</button>
+    <hr>
+
+    Обмінник<br>
+    <button id="btnBuyCrystal" onclick="buyCrystal()">Купити 0.004 кристалів за 7.74 жетонів</button>
+    <button id="btnBuyTokens" onclick="buyTokens()">Купити 7.74 токенів за 0.004 кристал</button>
+    <hr>
+
+    Швидкість заробітку жетонів: <span id="spnTokensRate"></span> в 1 годину<br>
+    Швидкість заробітку кристалів: <span id="spnCrystalsRate"></span> в 1 годину<br>
+    Швидкість заробітку води: <span id="spnWaterRate"></span> в 1 годину<br>
+    <hr>
+  </body>
 </html>
