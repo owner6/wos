@@ -20,8 +20,8 @@ let crystalMineBasePriceTokens = 5650 * 12 * 12  //стоимость постр
 
 myTimer = setInterval(endOfTurnCalc, 3600000)     // обновление игрових единиц (таймер) обновляется каждый час
 
-const costTokenBuyCrystal = 0.004                 
-const costCrystalByToken = 7.74                   
+const costTokenBuyCrystal = 0.001                 
+const costCrystalByToken = 170                  
 
 function buyCrystal() {                           //купить кристалы                                             
   if (game.tokens >= costCrystalByToken) {
