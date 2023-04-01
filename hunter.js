@@ -1,3 +1,4 @@
+/*
 // Определяем переменные для игрока и моба
 let playerHealth = 100;
 let playerDamage = 4;
@@ -84,5 +85,5 @@ function attackGranate() {
   document.getElementById("player-health").innerHTML = playerHealth;
   document.getElementById("enemy-health").innerHTML = enemyHealth;
 }
-
+*/
 

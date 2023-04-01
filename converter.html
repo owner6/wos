@@ -1,39 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="uk">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Перша гра</title>
     <link rel="stylesheet" href="alternative-main.css">
     <link rel="icon" href="media/resourses/favicon.ico"><!-- 32×32 -->
+    
   </head>
-  
-	<body>
 
-		<a class="a1Main" href="index.html">Головна</a>
+  <body>
+    <a class="a1Main" href="index.html">Головна</a>
     <hr>
     <span id="spnTokensValue"></span>,
     <span id="spnCrystalsValue"></span>,
     <span id="spnEnergyValue"></span>
     <hr>
 
-    <h1>Битва с мобами</h1>
-    <button onclick="attack()">Вдарити</button>
-    <button onclick="attackGranate()">Кинуть гранату</button>
-    <div id="player-stats">
-      <h2>Статистика игрока</h2>
-      <p>Здоровье: <span id="player-health">100</span></p>
-      <p>Урон: от 0</p>
-    </div>
-    <div id="enemy-stats">
-      <h2>Статистика моба</h2>
-      <p>Здоровье: <span id="enemy-health">25</span></p>
-      <p>Урон: от 0</p>
-    </div>
+		Обмінник<br>
+    <button id="btnBuyCrystal" onclick="buyCrystal()">Купити 0.001 кристалів за 286 жетонів</button>
+    <button id="btnBuyTokens" onclick="buyTokens()">Купити 286 токенів за 0.001 кристал</button>
     <hr>
-		<span id="resultBattle" style="color: rgb(0, 255, 0);"></span>
-		
-		<div class="panel">
+
+		Випити воду<br>
+    <button id="btnDrinkWater" onclick="drinkWater()">Випити воду</button>
+    <hr>
+
+    <div class="panel">
       <h3>Склад</h3>
       Вода: <span id="spnWaterValue"></span>,
       Металобрухт: <span id="spnScrapMetalValue"></span>,
@@ -41,7 +34,7 @@
     </div>
     <hr>
 
-		Кваліфікація<br>
+    Кваліфікація<br>
     <button id="btnUpgTokenMine" onclick="upgTokenMine()">Покращити, 5650 жетонів</button>
     <hr>
 
@@ -52,13 +45,17 @@
     Водозбирач<br>
     <button id="btnUpgWaterMine" onclick="upgWaterMine()">Модернізувати</button>
     <hr>
-	
 
-	Швидкість заробітку жетонів: <span id="spnTokensRate"></span> в 1 годину<br>
-	Швидкість заробітку кристалів: <span id="spnCrystalsRate"></span> в 1 годину<br>
-	Швидкість заробітку води: <span id="spnWaterRate"></span> в 1 годину<br>
-	<hr>
+    
+		
+				
+	</form>
 
-		<script src="scrypt.js"></script>
+    Швидкість заробітку жетонів: <span id="spnTokensRate"></span> в 1 годину<br>
+    Швидкість заробітку кристалів: <span id="spnCrystalsRate"></span> в 1 годину<br>
+    Швидкість заробітку води: <span id="spnWaterRate"></span> в 1 годину<br>
+    <hr>
+
+		<script src="scrypt.js"></script>	
   </body>
 </html>
