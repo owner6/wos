@@ -5,8 +5,8 @@ let game = {
   crystals:         0, 
   crystalGrowth:    0.01,   //колличество майнинга карбо в месяц / 30.4 дней / 24 часа = crystal в час 
   crystalsUpgLevel: 0,
-  energy:           5650,
-  energyGrowth:     2.769,   //2020(денег на еду в месяц) / 30.4 / 24	
+  energy:           5690,
+  energyGrowth:     3.540296052631579,   //2583(денег на еду в месяц) / 30.4 / 24	
 
   water:            0,     
   waterGrowth:      0.180,
@@ -142,7 +142,7 @@ function attackGranate() {
 }
 
 ///////////////////////////////////////////////////
-let crystalMineBasePriceTokens = 5650 * 12 * 12  //стоимость постройки кристальной фермы(5650 - необходимый доход в месяц*мес*года за сколько реальнасобирать на жилье)
+let crystalMineBasePriceTokens = 5690 * 12 * 12  //стоимость постройки кристальной фермы(5690 - необходимый доход в месяц*мес*года за сколько реальнасобирать на жилье)
 
 myTimer = setInterval(endOfTurnCalc, 3600000)     // обновление игрових единиц (таймер) обновляется каждый час
 
@@ -151,7 +151,7 @@ const ChangingTheStateOfAnObject = 1
 const costTokenBuyCrystal = 0.001
 const costCrystalByToken = 279 
 
-const costWaterBuyEnergy = 0.02452  //(стоимость 1 куб воды  / 1000)
+const costWaterBuyEnergy = 0.016164  //(стоимость 1 куб воды  / 1000)
 const costEnergyBuyWater = 1
 
 const costFriedChickenBuyEnergy = 199 //цена жареной курятины
@@ -208,15 +208,15 @@ function endOfTurnCalc() {
 }
 
 function tokensUpgCost() {
-  return game.tokensUpgLevel * 5650     //улучшить квалификацию
+  return game.tokensUpgLevel * 5690     //улучшить квалификацию
   }
 
 function crystalsUpgCost() {
-  return game.crystalsUpgLevel * 900  // улучшить кристальную ферму (бюджет криптовалюты)
+  return game.crystalsUpgLevel * 1500  // улучшить кристальную ферму (бюджет криптовалюты)
 }
 
 function waterUpgCost() {              // улучшить собиратель води
-  return game.waterUpgLevel * 532
+  return game.waterUpgLevel * 1387     //стоимость бочки для хранения воды
 }
 
 function upgTokenMine() {                           // если токенов больше либо равно, чем стоимость улучшения, то вычитаются токены с баланса и увеличивается уровень
