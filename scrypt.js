@@ -7,8 +7,11 @@ let game = {
   crystalsUpgLevel: 0,
   energy:           5690,
   energyGrowth:     3.540296052631579,   //2583(денег на еду в месяц) / 30.4 / 24	
-
-  water:            0,     
+	
+	health:						100,
+	healthGrowth:			2.5,
+  
+	water:            0,     
   waterGrowth:      0.180,
   waterUpgLevel:    1,
 
@@ -21,7 +24,7 @@ let game = {
 
 //арена
 // Определяем переменные для игрока и моба
-let playerHealth = 100;
+let playerHealth = game.health;
 let playerDamage = 4;
 let playerDamageGranate = 20;
 
@@ -33,7 +36,7 @@ let canRun = true;
 
 // Установить исходные значения переменных
 function resetGame() {
-  playerHealth = 100;
+  playerHealth = game.health;
   enemyHealth = 25;
   canRun = true;
 }
@@ -75,17 +78,27 @@ function attack() {
 	}
   
   // Моб наносит урон игроку
-  playerHealth =  playerHealth -  Math.floor(Math.random() * enemyDamage) + 1;
+  game.health =  game.health -  Math.floor(Math.random() * enemyDamage) + 1;
   
   // Если игрок умер, выводим сообщение об этом и останавливаем бой
-  if (playerHealth <= 0) {
-    alert("Вы проиграли!");
+  if (game.health <= 0) {
+		game.tokens -= Math.floor(Math.random() * 2) + game.tokenGrowth; 
+		game.energy -= 1  
+		updateUI()
+    document.getElementById("resultBattle").innerHTML = "Вы проиграли"
 		resetGame(); // обнулить переменные
-    return;
+    
+		// установить задержку в 3 секунды перед сбросом и удалением сообщения
+		setTimeout(function() {
+			resetGame();
+			document.getElementById("resultBattle").innerHTML = "";
+		}, 2000);
+		
+		return;
   }
   
   // Обновляем статистику здоровья игрока и моба на странице
-  document.getElementById("player-health").innerHTML = playerHealth;
+  updateUI()
   document.getElementById("enemy-health").innerHTML = enemyHealth;
 }
 
@@ -112,9 +125,7 @@ function attackGranate() {
 		game.rawChicken += Math.floor(Math.random() * 2) + 1;  
 		game.energy -= 1
 		updateUI();; // обновить отображение кристаллов на странице
-		updateUI();; // обновить отображение енергии на странице
 		document.getElementById("resultBattle").innerHTML = "Вы победили"
-	
 		resetGame()
 		
 		// установить задержку в 3 секунды перед сбросом и удалением сообщения
@@ -127,17 +138,27 @@ function attackGranate() {
 	}
   
   // Моб наносит урон игроку
-  playerHealth =  playerHealth -  Math.floor(Math.random() * enemyDamage) + 1;
+  game.health =  game.health -  Math.floor(Math.random() * enemyDamage) + 1;
   
   // Если игрок умер, выводим сообщение об этом и останавливаем бой
-  if (playerHealth <= 0) {
-    alert("Вы проиграли!");
+  if (game.health <= 0) {
+		game.tokens -= Math.floor(Math.random() * 2) + game.tokenGrowth;
+		game.energy -= 1
+		updateUI()
+		document.getElementById("resultBattle").innerHTML = "Вы проиграли"
 		resetGame()
-    return;
+
+			// установить задержку в 3 секунды перед сбросом и удалением сообщения
+			setTimeout(function() {
+				resetGame();
+				document.getElementById("resultBattle").innerHTML = "";
+			}, 2000);
+		
+			return;
   }
   
   // Обновляем статистику здоровья игрока и моба на странице
-  document.getElementById("player-health").innerHTML = playerHealth;
+  updateUI()
   document.getElementById("enemy-health").innerHTML = enemyHealth;
 }
 
@@ -202,6 +223,10 @@ function endOfTurnCalc() {
     game.tokens = game.tokens + game.tokenGrowth * game.tokensUpgLevel;
     game.crystals = game.crystals + game.crystalGrowth * game.crystalsUpgLevel;
     game.energy = game.energy - game.energyGrowth
+		game.health = game.health + game.healthGrowth
+			if (game.health > 100) {
+      	game.health = 100;
+    	}
     game.water = game.water + game.waterGrowth * game.waterUpgLevel;
     updateUI();  
   } 
@@ -256,6 +281,7 @@ function updateUI() {
   updateUICrystals();
   updateUIWater();
   updateUIEnergy();
+	updateUIHealth();
 	updateUIRawChicken();
 	updateUIFriedChicken();
 }
@@ -292,6 +318,10 @@ function updateUIWater() {
 
 function updateUIEnergy() {
   document.getElementById("spnEnergyValue").innerHTML = game.energy.toFixed(2);
+}
+
+function updateUIHealth() {
+  document.getElementById("spnHealthValue").innerHTML = game.health.toFixed(2);
 }
 
 function updateUIRawChicken() {

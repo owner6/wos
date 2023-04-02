@@ -83,6 +83,10 @@ button:hover {
     content: "⚡";
 }
 
+#spnHealthValue::before {
+	content: "🧡";
+}
+
 #a1Main, .a1 {
     font-weight: bold;
     padding: 5px;
