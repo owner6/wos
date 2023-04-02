@@ -1,15 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Перша гра</title>
-</head>
-<body>
-    <div id="divLblPrestige"></div>
-    <p>test01</p>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перша гра</title>
+    <link rel="stylesheet" href="alternative-main.css">
+    <link rel="icon" href="media/resourses/favicon.ico"><!-- 32×32 -->
     
-  <hr>
-</body>
+  </head>
+
+  <body>
+    <a class="a1Main" href="index.html">Головна</a>
+    <hr>
+    <span id="spnTokensValue"></span>,
+    <span id="spnCrystalsValue"></span>,
+    <span id="spnEnergyValue"></span>
+    <hr>
+
+    <a class="a1" href="kitchen.html">Кухня</a>
+		<a class="a1" href="workshop.html">Майстерня</a>
+    
+    <hr>
+		
+
+    <div class="panel">
+      <h3>Склад</h3>
+				<h4 style="color:#234F84">Їжа</h4>
+      		Вода: <span id="spnWaterValue"></span>,
+					Сире куряче м'ясо: <span id="spnRawChickenValue"> 0</span>,
+					<h4 style="color:#234F84">Ресурси</h4>
+					Металобрухт: <span id="spnScrapMetalValue"> 0</span>,
+      		Дизельне паливо: <span id="spnDieselFuelValue"> 0</span>
+    </div>
+    <hr>
+
+    Кваліфікація<br>
+    <button id="btnUpgTokenMine" onclick="upgTokenMine()">Покращити, 5650 жетонів</button>
+    <hr>
+
+    Ферма кристалів<br>
+    <button id="btnUpgCrystalMine" onclick="upgCrystalMine()">Побудувати, 237300 жетонів</button>
+    <hr>
+
+    Водозбирач<br>
+    <button id="btnUpgWaterMine" onclick="upgWaterMine()">Модернізувати</button>
+    <hr>
+
+				
+	
+
+    Швидкість заробітку жетонів: <span id="spnTokensRate"></span> в 1 годину<br>
+    Швидкість заробітку кристалів: <span id="spnCrystalsRate"></span> в 1 годину<br>
+    Швидкість заробітку води: <span id="spnWaterRate"></span> в 1 годину<br>
+    <hr>
+
+		<script src="scrypt.js"></script>	
+  </body>
 </html>

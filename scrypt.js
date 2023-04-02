@@ -6,12 +6,15 @@ let game = {
   crystalGrowth:    0.01,   //колличество майнинга карбо в месяц / 30.4 дней / 24 часа = crystal в час 
   crystalsUpgLevel: 0,
   energy:           5650,
-  energyGrowth:     2.769,   //2020(денег на еду в месяц) / 30.4 / 24
-  
+  energyGrowth:     2.769,   //2020(денег на еду в месяц) / 30.4 / 24	
+
   water:            0,     
   waterGrowth:      0.180,
   waterUpgLevel:    1,
 
+	rawChicken:				0,
+	friedChicken:			0,
+				
   dieselFuel:       0,  
   scrapMetal:       0,
 }
@@ -55,7 +58,7 @@ function attack() {
   
   // // Если моб умер, добавляем к переменной crystals, выводим сообщение об этом и останавливаем бой
 	if (enemyHealth <= 0) {
-		game.tokens += Math.floor(Math.random() * 279) + 1; 
+		game.rawChicken += Math.floor(Math.random() * 2) + 1; 
 		game.energy -= 1
 		updateUITokens(); // обновить отображение кристаллов на странице
 		updateUIEnergy(); // обновить отображение енергии на странице
@@ -106,7 +109,7 @@ function attackGranate() {
 
    // // Если моб умер, добавляем  к переменной crystals, выводим сообщение об этом и останавливаем бой
 	 if (enemyHealth <= 0) {
-		game.tokens += Math.floor(Math.random() * 279) + 1; 
+		game.rawChicken += Math.floor(Math.random() * 2) + 1;  
 		game.energy -= 1
 		updateUITokens(); // обновить отображение кристаллов на странице
 		updateUIEnergy(); // обновить отображение енергии на странице
@@ -143,11 +146,16 @@ let crystalMineBasePriceTokens = 5650 * 12 * 12  //стоимость постр
 
 myTimer = setInterval(endOfTurnCalc, 3600000)     // обновление игрових единиц (таймер) обновляется каждый час
 
-const costTokenBuyCrystal = 0.001                 
+const ChangingTheStateOfAnObject = 1
+
+const costTokenBuyCrystal = 0.001
 const costCrystalByToken = 279 
 
 const costWaterBuyEnergy = 0.02452  //(стоимость 1 куб воды  / 1000)
 const costEnergyBuyWater = 1
+
+const costFriedChickenBuyEnergy = 199 //цена жареной курятины
+const costEnergyBuyFriedChicken = 1
 
 function buyCrystal() {                           //купить кристалы                                             
   if (game.tokens >= costCrystalByToken) {
@@ -171,6 +179,22 @@ function drinkWater() {
     game.water -= costEnergyBuyWater;
     updateUI();
   }
+}
+
+function toFryMeat() {  //жарка куриного мяса
+	if (game.rawChicken >= 1 && game.rawChicken >= 1) {
+		game.friedChicken += 1;
+		game.rawChicken -= 1;
+		updateUI();
+	}
+}
+
+function eatFriedChicken() { //з'їсти м'ясо
+	if (game.energy >= costFriedChickenBuyEnergy && game.friedChicken >= costEnergyBuyFriedChicken) {
+		game.energy += costFriedChickenBuyEnergy;
+		game.friedChicken -= costEnergyBuyFriedChicken;
+		updateUI();
+	}
 }
 
 function endOfTurnCalc() {
@@ -232,6 +256,9 @@ function updateUI() {
   updateUICrystals();
   updateUIWater();
   updateUIEnergy();
+	updateUIRawChicken();
+	updateUIFriedChicken();
+//	updateUIEatFriedChicken();
 }
 
 function updateUITokens() {
@@ -265,8 +292,22 @@ function updateUIWater() {
 }
 
 function updateUIEnergy() {
-  document.getElementById("spnEnergyValue").innerHTML = game.energy;
+  document.getElementById("spnEnergyValue").innerHTML = game.energy.toFixed(2);
 }
+
+function updateUIRawChicken() {
+	document.getElementById("spnRawChickenValue").innerHTML = game.rawChicken.toFixed(0);
+}
+
+function updateUIFriedChicken() {
+	document.getElementById("spnFriedChickenValue").innerHTML = game.friedChicken.toFixed(0);
+}
+
+/*
+function updateUIEatFriedChicken() {
+	document.getElementById("spnEatFriedChickenValue").innerHTML = game.friedChicken.toFixed(0);
+}
+*/
 
 function saveGame() {
   localStorage.setItem('gameTutorial', JSON.stringify(game));
