@@ -302,12 +302,6 @@ function updateUIFriedChicken() {
 	document.getElementById("spnFriedChickenValue").innerHTML = game.friedChicken.toFixed(0);
 }
 
-/*
-function updateUIEatFriedChicken() {
-	document.getElementById("spnEatFriedChickenValue").innerHTML = game.friedChicken.toFixed(0);
-}
-*/
-
 function saveGame() {
   localStorage.setItem('gameTutorial', JSON.stringify(game));
 }
