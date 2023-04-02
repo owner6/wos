@@ -3,7 +3,7 @@ let game = {
   tokenGrowth:      7.08,   //5166 / 30.4 / 24 =  tokens в час 
   tokensUpgLevel:   1,
   crystals:         0, 
-  crystalGrowth:    0.01,   //колличество майнинга карбо в месяц / 30.4 дней / 24 часа = crystal в час 
+  crystalGrowth:    0.004,   //колличество майнинга карбо в месяц / 30.4 дней / 24 часа = crystal в час 
   crystalsUpgLevel: 0,
   energy:           5166,  //рекомендуемая зарплата за месяц
   energyGrowth:     3.540296052631579,   //2583(денег на еду в месяц) / 30.4 / 24	
