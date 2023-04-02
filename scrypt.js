@@ -60,8 +60,8 @@ function attack() {
 	if (enemyHealth <= 0) {
 		game.rawChicken += Math.floor(Math.random() * 2) + 1; 
 		game.energy -= 1
-		updateUITokens(); // обновить отображение кристаллов на странице
-		updateUIEnergy(); // обновить отображение енергии на странице
+		updateUI();; // обновить отображение кристаллов на странице
+		updateUI();; // обновить отображение енергии на странице
 		document.getElementById("resultBattle").innerHTML = "Вы победили"
 		resetGame()
 		
@@ -111,8 +111,8 @@ function attackGranate() {
 	 if (enemyHealth <= 0) {
 		game.rawChicken += Math.floor(Math.random() * 2) + 1;  
 		game.energy -= 1
-		updateUITokens(); // обновить отображение кристаллов на странице
-		updateUIEnergy(); // обновить отображение енергии на странице
+		updateUI();; // обновить отображение кристаллов на странице
+		updateUI();; // обновить отображение енергии на странице
 		document.getElementById("resultBattle").innerHTML = "Вы победили"
 	
 		resetGame()
@@ -258,7 +258,6 @@ function updateUI() {
   updateUIEnergy();
 	updateUIRawChicken();
 	updateUIFriedChicken();
-//	updateUIEatFriedChicken();
 }
 
 function updateUITokens() {
