@@ -1,44 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перша гра</title>
+    <link rel="stylesheet" href="alternative-main.css">
+    <link rel="icon" href="media/resourses/favicon.ico"><!-- 32×32 -->
+    
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Перша гра</title>
-  <link rel="stylesheet" href="alternative-main.css">
-  <link rel="icon" href="media/resourses/favicon.ico"><!-- 32×32 -->
-</head>
-
-<body>
-
-  <a class="a1Main" href="index.html">Головна</a>
-  <hr>
-  <span id="spnTokensValue"></span>,
-  <span id="spnCrystalsValue"></span>,
-  <span id="spnEnergyValue"></span>,
-  <span id="spnHealthValue"></span>
-  <hr>
-
-  <h1>Битва с мобами</h1>
-  <button onclick="attack()">Вдарити</button>
-  <button onclick="attackGranate()">Кинуть гранату</button>
-
-  <div id="enemy-stats">
-    <h2>Статистика моба</h2>
-    <p>Здоровье: <span id="enemy-health">25</span></p>
-  </div>
+  <body>
+    <a class="a1Main" href="index.html">Головна</a>
     <hr>
-    <span id="resultBattle" style="color: rgb(255, 255, 255);"></span>
+		<span id="spnTokensValue"></span>,
+    <span id="spnCrystalsValue"></span>,
+    <span id="spnEnergyValue"></span>,
+		<span id="spnHealthValue"></span>
 
-    <div class="panel">
+    <hr>
+
+		Обмінник<br>
+    <button id="btnBuyCrystal" onclick="buyCrystal()">Купити 0.001 кристалів за 286 жетонів</button>
+    <button id="btnBuyTokens" onclick="buyTokens()">Купити 286 токенів за 0.001 кристал</button>
+    <hr>
+
+		<div class="panel">
       <h3>Склад</h3>
-      <h4 style="color:#234F84">Їжа</h4>
-        Вода: <span id="spnWaterValue"></span>,
-        Сире куряче м'ясо: <span id="spnRawChickenValue"> 0</span>,
-        Жарене куряче м'ясо: <span id="spnFriedChickenValue"> 0</span>,
-      <h4 style="color:#234F84">Ресурси</h4>
-        Металобрухт: <span id="spnScrapMetalValue"> 0</span>,
-        Дизельне паливо: <span id="spnDieselFuelValue"> 0</span>
+				<h4 style="color:#234F84">Їжа</h4>
+      		Вода: <span id="spnWaterValue"></span>,
+					Сире куряче м'ясо: <span id="spnRawChickenValue"> 0</span>,
+					Жарене куряче м'ясо: <span id="spnFriedChickenValue"> 0</span>,
+				<h4 style="color:#234F84">Ресурси</h4>
+					Металобрухт: <span id="spnScrapMetalValue"> 0</span>,
+      		Дизельне паливо: <span id="spnDieselFuelValue"> 0</span>
     </div>
     <hr>
 
@@ -54,13 +48,16 @@
     <button id="btnUpgWaterMine" onclick="upgWaterMine()">Модернізувати</button>
     <hr>
 
+    
+		
+				
+	</form>
 
     Швидкість заробітку жетонів: <span id="spnTokensRate"></span> в 1 годину<br>
     Швидкість заробітку кристалів: <span id="spnCrystalsRate"></span> в 1 годину<br>
     Швидкість заробітку води: <span id="spnWaterRate"></span> в 1 годину<br>
     <hr>
 
-    <script src="scrypt.js"></script>
-</body>
-
+		<script src="scrypt.js"></script>	
+  </body>
 </html>

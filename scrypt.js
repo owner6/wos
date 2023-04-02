@@ -1,11 +1,11 @@
 let game = {                
   tokens:           0,
-  tokenGrowth:      7.740,   //5650 / 30.4 / 24 =  tokens в час 
+  tokenGrowth:      7.08,   //5166 / 30.4 / 24 =  tokens в час 
   tokensUpgLevel:   1,
   crystals:         0, 
   crystalGrowth:    0.01,   //колличество майнинга карбо в месяц / 30.4 дней / 24 часа = crystal в час 
   crystalsUpgLevel: 0,
-  energy:           5690,
+  energy:           5166,  //рекомендуемая зарплата за месяц
   energyGrowth:     3.540296052631579,   //2583(денег на еду в месяц) / 30.4 / 24	
 	
 	health:						100,
@@ -24,7 +24,6 @@ let game = {
 
 //арена
 // Определяем переменные для игрока и моба
-let playerHealth = game.health;
 let playerDamage = 4;
 let playerDamageGranate = 20;
 
@@ -34,9 +33,9 @@ let enemyDamage = 5;
 let secondsToWait = 10;
 let canRun = true;
 
-// Установить исходные значения переменных
+// Установить исходные значения переменных 
 function resetGame() {
-  playerHealth = game.health;
+  game.health;
   enemyHealth = 25;
   canRun = true;
 }
@@ -63,8 +62,7 @@ function attack() {
 	if (enemyHealth <= 0) {
 		game.rawChicken += Math.floor(Math.random() * 2) + 1; 
 		game.energy -= 1
-		updateUI();; // обновить отображение кристаллов на странице
-		updateUI();; // обновить отображение енергии на странице
+		updateUI();; // обновить отображение  на странице
 		document.getElementById("resultBattle").innerHTML = "Вы победили"
 		resetGame()
 		
@@ -163,7 +161,7 @@ function attackGranate() {
 }
 
 ///////////////////////////////////////////////////
-let crystalMineBasePriceTokens = 5690 * 12 * 12  //стоимость постройки кристальной фермы(5690 - необходимый доход в месяц*мес*года за сколько реальнасобирать на жилье)
+let crystalMineBasePriceTokens = 5166 * 12 * 12  //стоимость постройки кристальной фермы(5690 - необходимый доход в месяц*мес*года за сколько реальнасобирать на жилье)
 
 myTimer = setInterval(endOfTurnCalc, 3600000)     // обновление игрових единиц (таймер) обновляется каждый час
 
@@ -182,6 +180,7 @@ function buyCrystal() {                           //купить кристал�
   if (game.tokens >= costCrystalByToken) {
       game.tokens -= costCrystalByToken
       game.crystals += costTokenBuyCrystal
+			game.energy -= 1
       updateUI()   
   }   
 } 
@@ -190,6 +189,7 @@ function buyTokens() {                             //купить токены
   if (game.crystals >= costTokenBuyCrystal ) {
       game.crystals -= costTokenBuyCrystal 
       game.tokens += costCrystalByToken 
+			game.energy -= 1
       updateUI();      
   }
 }   
@@ -206,6 +206,7 @@ function toFryMeat() {  //жарка куриного мяса
 	if (game.rawChicken >= 1 && game.rawChicken >= 1) {
 		game.friedChicken += 1;
 		game.rawChicken -= 1;
+		game.energy -= 1
 		updateUI();
 	}
 }
@@ -233,7 +234,7 @@ function endOfTurnCalc() {
 }
 
 function tokensUpgCost() {
-  return game.tokensUpgLevel * 5690     //улучшить квалификацию
+  return game.tokensUpgLevel * 5166     //улучшить квалификацию
   }
 
 function crystalsUpgCost() {
