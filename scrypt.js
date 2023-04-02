@@ -322,7 +322,7 @@ function updateUIEnergy() {
 }
 
 function updateUIHealth() {
-  document.getElementById("spnHealthValue").innerHTML = game.health.toFixed(2);
+  document.getElementById("spnHealthValue").innerHTML = game.health.toFixed(0);
 }
 
 function updateUIRawChicken() {
