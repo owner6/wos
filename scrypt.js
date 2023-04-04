@@ -7,7 +7,8 @@ let game = {
   crystalsUpgLevel: 0,
   energy:           5166,  //рекомендуемая зарплата за месяц
   energyGrowth:     3.540296052631579,   //2583(денег на еду в месяц) / 30.4 / 24	
-	
+	fightLimit:       3,
+
 	health:						100,
 	healthGrowth:			2.5,
   
@@ -20,6 +21,8 @@ let game = {
 				
   dieselFuel:       0,  
   scrapMetal:       0,
+
+	lightNoiseGrenade: 0,
 }
 
 //арена
@@ -42,6 +45,23 @@ function resetGame() {
 
 // Функция для атаки моба коротким оружием
 function attack() {
+
+	if (game.energy > 0) {
+		if (game.energy -= 1) {
+			
+	}
+}
+
+	if (game.fightLimit < 1) {
+		if (confirm("Превышен лимит боев, подождите")) {
+			attack();
+		} else {
+			alert("Отдохните");
+		}
+		return
+	}
+	
+
   if (!canRun) {
     if (confirm("Вы не можете выполнить это действие слишком часто! Подтвердите, что хотите продолжить.")) {
       attack(); // рекурсивный вызов функции
@@ -55,6 +75,8 @@ function attack() {
     canRun = true;
   }, secondsToWait * 200);
 
+	
+
   // Игрок наносит урон мобу
   enemyHealth = enemyHealth - Math.floor(Math.random() * playerDamage) + 1;
   
@@ -62,6 +84,7 @@ function attack() {
 	if (enemyHealth <= 0) {
 		game.rawChicken += Math.floor(Math.random() * 2) + 1; 
 		game.energy -= 1
+		game.fightLimit -= 1
 		updateUI();; // обновить отображение  на странице
 		document.getElementById("resultBattle").innerHTML = "Вы победили"
 		resetGame()
@@ -81,7 +104,8 @@ function attack() {
   // Если игрок умер, выводим сообщение об этом и останавливаем бой
   if (game.health <= 0) {
 		game.tokens -= Math.floor(Math.random() * 2) + game.tokenGrowth; 
-		game.energy -= 1  
+		game.energy -= 1
+		game.fightLimit -= 1  
 		updateUI()
     document.getElementById("resultBattle").innerHTML = "Вы проиграли"
 		resetGame(); // обнулить переменные
@@ -100,9 +124,38 @@ function attack() {
   document.getElementById("enemy-health").innerHTML = enemyHealth;
 }
 
-// Функция для атаки моба гранатой
+///////////////////////////////////////////////////////////////////////////////Функция для атаки моба гранатой
 function attackGranate() {
-  if (!canRun) {
+
+	if (game.energy > 0) {
+		if (game.energy -= 1) {
+			updateUI()
+	}
+}
+	
+	if (game.lightNoiseGrenade >= 1) {
+		game.lightNoiseGrenade -= 1
+	} 
+
+	if (game.lightNoiseGrenade < 1) {
+		 if (confirm("Нету гранат")) {
+			attackGranate();
+		} else {
+			alert("Купите либо сделайте гранаты")
+		}
+		return
+	}
+
+  if (game.fightLimit < 1) {
+		if (confirm("Превышен лимит боев, подождите")) {
+			attackGranate();
+		} else {
+			alert("Отдохните");
+		}
+		return
+	}
+	
+	if (!canRun) {
     if (confirm("Вы не можете выполнить это действие слишком часто! Подтвердите, что хотите продолжить.")) {
       attackGranate(); // рекурсивный вызов функции
     } else {
@@ -122,6 +175,7 @@ function attackGranate() {
 	 if (enemyHealth <= 0) {
 		game.rawChicken += Math.floor(Math.random() * 2) + 1;  
 		game.energy -= 1
+		game.fightLimit -= 1
 		updateUI();; // обновить отображение кристаллов на странице
 		document.getElementById("resultBattle").innerHTML = "Вы победили"
 		resetGame()
@@ -142,6 +196,7 @@ function attackGranate() {
   if (game.health <= 0) {
 		game.tokens -= Math.floor(Math.random() * 2) + game.tokenGrowth;
 		game.energy -= 1
+		game.fightLimit -= 1
 		updateUI()
 		document.getElementById("resultBattle").innerHTML = "Вы проиграли"
 		resetGame()
@@ -160,7 +215,7 @@ function attackGranate() {
   document.getElementById("enemy-health").innerHTML = enemyHealth;
 }
 
-///////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 let crystalMineBasePriceTokens = 5166 * 12 * 12  //стоимость постройки кристальной фермы(5690 - необходимый доход в месяц*мес*года за сколько реальнасобирать на жилье)
 
 myTimer = setInterval(endOfTurnCalc, 3600000)     // обновление игрових единиц (таймер) обновляется каждый час
@@ -176,11 +231,12 @@ const costEnergyBuyWater = 1
 const costFriedChickenBuyEnergy = 199 //цена жареной курятины
 const costEnergyBuyFriedChicken = 1
 
+
+
 function buyCrystal() {                           //купить кристалы                                             
   if (game.tokens >= costCrystalByToken) {
       game.tokens -= costCrystalByToken
       game.crystals += costTokenBuyCrystal
-			game.energy -= 1
       updateUI()   
   }   
 } 
@@ -189,7 +245,6 @@ function buyTokens() {                             //купить токены
   if (game.crystals >= costTokenBuyCrystal ) {
       game.crystals -= costTokenBuyCrystal 
       game.tokens += costCrystalByToken 
-			game.energy -= 1
       updateUI();      
   }
 }   
@@ -214,12 +269,22 @@ function toFryMeat() {  //жарка куриного мяса
 function eatFriedChicken() { //з'їсти м'ясо
 	if (game.energy >= costFriedChickenBuyEnergy && game.friedChicken >= costEnergyBuyFriedChicken) {
 		game.energy += costFriedChickenBuyEnergy;
+		game.health += 10
 		game.friedChicken -= costEnergyBuyFriedChicken;
 		updateUI();
 	}
 }
 
-function endOfTurnCalc() {
+function buyLightNoiseGrenade() { //купити гранату
+	if (game.scrapMetal >= 8) {
+		game.scrapMetal -= 8
+		game.lightNoiseGrenade += 1
+		updateUI();
+	}
+}
+
+
+function endOfTurnCalc() { //таймер
   if (game.energy >= 2.796) {       //если енергии меньше 0 то таймер перестает работать                       
     game.tokens = game.tokens + game.tokenGrowth * game.tokensUpgLevel;
     game.crystals = game.crystals + game.crystalGrowth * game.crystalsUpgLevel;
@@ -228,6 +293,10 @@ function endOfTurnCalc() {
 			if (game.health > 100) {
       	game.health = 100;
     	}
+		game.fightLimit = game.fightLimit + 1
+			if (game.fightLimit > 3) {
+				game.fightLimit = 3
+			}
     game.water = game.water + game.waterGrowth * game.waterUpgLevel;
     updateUI();  
   } 
@@ -277,14 +346,44 @@ function upgWaterMine() {                           // если токенов �
   }
 }
 
+let toggle = button => {
+	let element = document.getElementById("mydiv");
+	let hidden = element.getAttribute("hidden");
+
+	if (hidden) {
+		 element.removeAttribute("hidden");
+		 button.innerText = "Закрити склад";
+		 localStorage.setItem("divState", "visible");
+	} else {
+		 element.setAttribute("hidden", "hidden");
+		 button.innerText = "Відкрити склад";
+		 localStorage.setItem("divState", "hidden");
+	}
+}
+
+// on page load
+window.addEventListener("load", () => {
+  let element = document.getElementById("mydiv");
+  let divState = localStorage.getItem("divState");
+
+  if (divState === "visible") {
+    element.removeAttribute("hidden");
+  } else if (divState === "hidden") {
+    element.setAttribute("hidden", "hidden");
+  }
+});
+
 function updateUI() {
-  updateUITokens();
-  updateUICrystals();
-  updateUIWater();
-  updateUIEnergy();
-	updateUIHealth();
-	updateUIRawChicken();
-	updateUIFriedChicken();
+  updateUITokens()
+  updateUICrystals()
+  updateUIWater()
+  updateUIEnergy()
+	updateUIHealth()
+	updateUIRawChicken()
+	updateUIFriedChicken()
+	updateUIFightLimit()
+	updateUIScrapMetal()
+	updateUILightNoiseGrenade()
 }
 
 function updateUITokens() {
@@ -331,6 +430,18 @@ function updateUIRawChicken() {
 
 function updateUIFriedChicken() {
 	document.getElementById("spnFriedChickenValue").innerHTML = game.friedChicken.toFixed(0);
+}
+
+function updateUIFightLimit() {
+	document.getElementById("spnFightLimitValue").innerHTML = game.fightLimit.toFixed(0);
+}
+
+function updateUIScrapMetal() {
+	document.getElementById("spnScrapMetalValue").innerHTML = game.scrapMetal.toFixed(0)
+}
+
+function updateUILightNoiseGrenade() {
+	document.getElementById("spnLightNoiseGrenadeValue").innerHTML = game.lightNoiseGrenade.toFixed(0);
 }
 
 function saveGame() {

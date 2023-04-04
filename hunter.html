@@ -16,10 +16,11 @@
     <span id="spnTokensValue"></span>,
     <span id="spnCrystalsValue"></span>,
     <span id="spnEnergyValue"></span>,
-    <span id="spnHealthValue"></span>
+    <span id="spnHealthValue"></span>,
+		<span id="spnFightLimitValue"></span>
     <hr>
 
-    <h1>Битва с мобами</h1>
+    <h1>Курка</h1>
     <button onclick="attack()">Вдарити</button>
     <button onclick="attackGranate()">Кинуть гранату</button>
 
@@ -30,17 +31,23 @@
     <hr>
     <span id="resultBattle" style="color: rgb(255, 255, 255);"></span>
 
-    <div class="panel">
-        <h3>Склад</h3>
-        <h4 style="color:#234F84">Їжа</h4>
-        Вода: <span id="spnWaterValue"></span>,
-        Сире куряче м'ясо: <span id="spnRawChickenValue"> 0</span>,
-        Жарене куряче м'ясо: <span id="spnFriedChickenValue"> 0</span>,
-        <h4 style="color:#234F84">Ресурси</h4>
-        Металобрухт: <span id="spnScrapMetalValue"> 0</span>,
-        Дизельне паливо: <span id="spnDieselFuelValue"> 0</span>
-    </div>
+		<div id="mydiv" class="panel">
+			<h3>Склад</h3>
+  		<h4 style="color:#234F84">Їжа</h4>
+      		Вода: <span id="spnWaterValue"></span>,
+					Сире куряче м'ясо: <span id="spnRawChickenValue"> 0</span>,
+					Жарене куряче м'ясо: <span id="spnFriedChickenValue"> 0</span>,
+				<h4 style="color:#234F84">Ресурси</h4>
+					Металобрухт: <span id="spnScrapMetalValue"> 0</span>,
+      		Дизельне паливо: <span id="spnDieselFuelValue"> 0</span>,	
+				<h4 style="color:#234F84">Зброя</h4>
+					Світлошумова граната: <span id="spnLightNoiseGrenadeValue"> 0</span>
+		</div>
+		
+		<button onclick="toggle(this)" class="BtnWarehouse">СКЛАД</button>
     <hr>
+		
+    
 
     Кваліфікація<br>
     <button id="btnUpgTokenMine" onclick="upgTokenMine()">Покращити, 5650 жетонів</button>

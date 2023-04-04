@@ -15,7 +15,8 @@
 		<span id="spnTokensValue"></span>,
     <span id="spnCrystalsValue"></span>,
     <span id="spnEnergyValue"></span>,
-		<span id="spnHealthValue"></span>
+		<span id="spnHealthValue"></span>,
+		<span id="spnFightLimitValue"></span>
 
     <hr>
 
@@ -24,16 +25,20 @@
     <button id="btnBuyTokens" onclick="buyTokens()">Купити 286 токенів за 0.001 кристал</button>
     <hr>
 
-		<div class="panel">
-      <h3>Склад</h3>
-				<h4 style="color:#234F84">Їжа</h4>
+		<div id="mydiv" class="panel">
+			<h3>Склад</h3>
+  		<h4 style="color:#234F84">Їжа</h4>
       		Вода: <span id="spnWaterValue"></span>,
 					Сире куряче м'ясо: <span id="spnRawChickenValue"> 0</span>,
 					Жарене куряче м'ясо: <span id="spnFriedChickenValue"> 0</span>,
 				<h4 style="color:#234F84">Ресурси</h4>
 					Металобрухт: <span id="spnScrapMetalValue"> 0</span>,
-      		Дизельне паливо: <span id="spnDieselFuelValue"> 0</span>
-    </div>
+      		Дизельне паливо: <span id="spnDieselFuelValue"> 0</span>,	
+				<h4 style="color:#234F84">Зброя</h4>
+					Світлошумова граната: <span id="spnLightNoiseGrenadeValue"> 0</span>
+		</div>
+		
+		<button onclick="toggle(this)" class="BtnWarehouse">СКЛАД</button>
     <hr>
 
     Кваліфікація<br>
@@ -46,11 +51,7 @@
 
     Водозбирач<br>
     <button id="btnUpgWaterMine" onclick="upgWaterMine()">Модернізувати</button>
-    <hr>
-
-    
-		
-				
+    <hr>		
 	</form>
 
     Швидкість заробітку жетонів: <span id="spnTokensRate"></span> в 1 годину<br>
