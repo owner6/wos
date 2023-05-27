@@ -1,12 +1,12 @@
 let game = {                
   tokens:           0,
-  tokenGrowth:      7.08,   //5166 / 30.4 / 24 =  tokens в час 
+  tokenGrowth:      9.978070175438596,   //7280 / 30.4 / 24 =  tokens в час 
   tokensUpgLevel:   1,
   crystals:         0, 
-  crystalGrowth:    0.004,   //колличество майнинга карбо в месяц / 30.4 дней / 24 часа = crystal в час 
+  crystalGrowth:    0.0060032894736842,   //колличество майнинга карбо в месяц / 30.4 дней / 24 часа = crystal в час 
   crystalsUpgLevel: 0,
-  energy:           5166,  //рекомендуемая зарплата за месяц
-  energyGrowth:     3.540296052631579,   //2583(денег на еду в месяц) / 30.4 / 24	
+  energy:           7280,  //рекомендуемая зарплата за месяц
+  energyGrowth:     4.989035087719298,   //3640(денег на еду в месяц) / 30.4 / 24	
 	fightLimit:       3,
 
 	health:						100,
@@ -24,6 +24,7 @@ let game = {
 
 	lightNoiseGrenade: 0,
 }
+
 
 //арена
 // Определяем переменные для игрока и моба
@@ -216,14 +217,14 @@ function attackGranate() {
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-let crystalMineBasePriceTokens = 5166 * 12 * 12  //стоимость постройки кристальной фермы(5690 - необходимый доход в месяц*мес*года за сколько реальнасобирать на жилье)
+let crystalMineBasePriceTokens = 7280 * 12 * 12  //стоимость постройки кристальной фермы(7280 - необходимый доход в месяц*мес*года за сколько реальнасобирать на жилье)
 
 myTimer = setInterval(endOfTurnCalc, 3600000)     // обновление игрових единиц (таймер) обновляется каждый час
 
 const ChangingTheStateOfAnObject = 1
 
 const costTokenBuyCrystal = 0.001
-const costCrystalByToken = 279 
+const costCrystalByToken = 1296           //нужно оновлять 
 
 const costWaterBuyEnergy = 0.016164  //(стоимость 1 куб воды  / 1000)
 const costEnergyBuyWater = 1
@@ -233,13 +234,13 @@ const costEnergyBuyFriedChicken = 1
 
 
 
-function buyCrystal() {                           //купить кристалы                                             
+/*function buyCrystal() {                           //купить кристалы                                             
   if (game.tokens >= costCrystalByToken) {
       game.tokens -= costCrystalByToken
       game.crystals += costTokenBuyCrystal
       updateUI()   
   }   
-} 
+} */
 
 function buyTokens() {                             //купить токены
   if (game.crystals >= costTokenBuyCrystal ) {
@@ -303,15 +304,15 @@ function endOfTurnCalc() { //таймер
 }
 
 function tokensUpgCost() {
-  return game.tokensUpgLevel * 5166     //улучшить квалификацию
+  return game.tokensUpgLevel * 7280     //улучшить квалификацию
   }
 
 function crystalsUpgCost() {
-  return game.crystalsUpgLevel * 1500  // улучшить кристальную ферму (бюджет криптовалюты)
+  return game.crystalsUpgLevel * 1113 // улучшить кристальную ферму (бюджет криптовалюты)
 }
 
 function waterUpgCost() {              // улучшить собиратель води
-  return game.waterUpgLevel * 1387     //стоимость бочки для хранения воды
+  return game.waterUpgLevel * 500     //стоимость бочки для хранения воды
 }
 
 function upgTokenMine() {                           // если токенов больше либо равно, чем стоимость улучшения, то вычитаются токены с баланса и увеличивается уровень
@@ -373,12 +374,20 @@ window.addEventListener("load", () => {
   }
 });
 
+let healthBar = document.getElementById('health-bar');
+let healthLevel = 100;
+
+// изменяем ширину элемента полоски здоровья в зависимости от уровня здоровья
+function updateHealthBar() {
+  healthBar.style.width = game.health + '%';
+}
+
 function updateUI() {
   updateUITokens()
   updateUICrystals()
   updateUIWater()
   updateUIEnergy()
-	updateUIHealth()
+	updateHealthBar()
 	updateUIRawChicken()
 	updateUIFriedChicken()
 	updateUIFightLimit()
@@ -420,8 +429,8 @@ function updateUIEnergy() {
   document.getElementById("spnEnergyValue").innerHTML = game.energy.toFixed(2);
 }
 
-function updateUIHealth() {
-  document.getElementById("spnHealthValue").innerHTML = game.health.toFixed(0);
+function updateHealthBar() {
+  healthBar.style.width = game.health + '%';
 }
 
 function updateUIRawChicken() {

@@ -3,7 +3,7 @@ body {
     color: #827D77;
     font-family: Arial, sans-serif;
     font-size: 1em;
-    line-height: 1.5;
+   
     width: 584px;
     margin: 0 auto;
 }
@@ -96,6 +96,10 @@ button:hover {
     content: "🎱";
 }
 
+#spnScrapMetalValue::before {
+	content: "🔩";
+}
+
 #spnCrystalsValue::before {
     content: "💎";
 }
@@ -111,6 +115,11 @@ button:hover {
 #spnFightLimitValue::before {
 	content: "⚔️";
 }
+
+
+
+
+
 
 #a1Main, .a1 {
     font-weight: bold;
@@ -152,6 +161,11 @@ button:hover {
 	margin-bottom: 10px;
 }
 
+#health-bar {
+  width: 200px;
+  height: 5px;
+  background-color: red;
+}
 
 
 		
