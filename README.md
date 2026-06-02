@@ -45,6 +45,8 @@ python -m http.server 8000
 
 Потім перейти на `http://localhost:8000`.
 
+<img width="592" height="758" alt="image" src="https://github.com/user-attachments/assets/1054d2a1-9154-4b3b-9e12-ac1959a34d2f" />
+
 ## Технології
 
 - HTML5, CSS3
